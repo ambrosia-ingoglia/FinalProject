@@ -1,0 +1,79 @@
+/* Style the header */
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #ffffff;
+  background: #ffffff;
+}
+
+h1 {
+	padding-right: 350px;
+	padding-top: 7px;
+}
+
+
+.btn {
+  height: 50px;
+  width: 175px;
+  border: none;
+  background-color: #FFCC00;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: Courier New;
+  font-size: 20px;
+}
+
+.btn2 {
+  height: 50px;
+  width: 250px;
+  border: none;
+  background-color: #FFCC00;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: Courier New;
+  font-size: 20px;
+}
+
+.btn3 {
+  height: 50px;
+  width: 250px;
+  border: none;
+  background-color: #18113C;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: Courier New;
+  font-size: 20px;
+}
+
+
+#pic {
+	padding-left: 350px;
+}
+
+#gif {
+	padding-left: 400px;
+	width:600px;
+	height:600px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+#topics {
+	font-family: Courier New;
+	font-size: 30px;
+	color: #18113C;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+h2 {
+  font-family: Courier New;
+  font-size: 30px;
+  padding-right: 350px;
+}
+
