@@ -22,6 +22,8 @@ public class UserService {
 		
 	}
 	
+	
+	//checks if the user exists by sending it to UserRepository
 	public String checkDatabase(String username, String pwd, Model model) {
     	
     	String user_name;
@@ -38,14 +40,14 @@ public class UserService {
 				user_name = user_info.getUsername();
 				pwd2 = user_info.getPassword();
 			
-				model.addAttribute("fname", fname);
+				/*model.addAttribute("fname", fname);
 				model.addAttribute("lname", lname);
 				model.addAttribute("username", user_name);
-				model.addAttribute("password", pwd2);
+				model.addAttribute("password", pwd2);*/
 				
 				if(user_name.equals(username)) {
 					if(pwd2.equals(pwd)) {
-						return "Welcome " + fname + " " + lname;
+						return "Welcome, " + fname + " " + lname;
 					} else {
 						return null;
 					}
@@ -59,5 +61,14 @@ public class UserService {
 		return null;
 		
     }
+	
+	
+	//creates a account
+	public String createUser(String username, String pwd, String fname,
+			String lname, String email) {
+		String acc = UserRepository.createUserDB(username, pwd, fname, lname, email);
+		
+		return acc;
+	}
 	
 }

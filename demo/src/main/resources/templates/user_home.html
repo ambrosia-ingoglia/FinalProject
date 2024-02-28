@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <link rel="stylesheet" href="user_hp.css">
   <title>Home</title>
@@ -16,6 +16,7 @@
 	  <tr>
 	      <th>
 			<ul>	
+			  <li><h2 th:text="${reply}"></h2></li>
 			  <li><a href="user_home.html"> <img id = "images" src="images/home.png"> Home</a></li>
 			  <li><a href="#"> <img id = "images" src="images/about.png"> About</a></li>
 			  <li><a href="#"> <img id = "images" src="images/learn.png"> Learn</a></li>

@@ -9,17 +9,22 @@
 	<div>
 		<h2>Create Account</h2>
 		
-		<form action="#">
+		<form action="/SignUp" method ="post">
 		  <label for="username">Username:</label><br>
 		  <input id="username" name="username" required><br>
+		  
+		  <label for="firstname">First Name:</label><br>
+		  <input id="firstname" name="firstname" required><br>
+		  <label for="lastname">Last Name:</label><br>
+		  <input id="lastname" name="lastname" required><br>
 		  
 		  <label for="email">Email:</label><br>
 		  <input id="email" name="email" required><br>
 		  
 		  <label for="password">Password:</label><br>
-		  <input id="password" name="password" required><br><br>
+		  <input type="password" name="password" required><br><br>
 		  
-		  <a id="submit" href="setup.html">Submit</a>
+		   <input type="submit" value="Sign Up" />
 		</form>
 	</div>
 </body>
