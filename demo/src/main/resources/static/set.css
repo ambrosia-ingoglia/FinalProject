@@ -1,10 +1,31 @@
 /* Style the header */
-.header {
-  padding: 10px 16px;
-  background: #555;
-  color: #ffffff;
-  background: #ffffff;
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
 }
+
+
+.topnav a {
+	text-align: center;
+  color: black;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-decoration: none;
+  font-size: 40px;
+  font-family: Courier New;
+
+}  
+
+
+  #pic {
+  padding-left: 38%;
+  align-self: center;
+    display: flex;
+ padding-bottom: 30px;
+    
+  }
 
 h1 {
 	padding-right: 350px;
@@ -21,14 +42,11 @@ h2 {
 }
 
 #pic {
-	padding-left: 350px;
+	padding-left: 38%;
+	padding-bottom: 20px;
 }
 
 
-div {
-  display: flex;
-  justify-content: space-between;
-}
 
 table {
 	  margin-left: auto;
