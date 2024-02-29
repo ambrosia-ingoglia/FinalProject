@@ -1,28 +1,28 @@
-  ul {
-    list-style-type: none;
-    padding: 0;
-    width: 200px; /* Adjust the width as needed */
-    font-family: Courier New;
-	font-size: 20px;
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
 
-  }
 
-  /* Style the links inside the menu */
-  li a {
-    display: block;
-    color: #000;
-    text-decoration: none;
-    display: flex;
-    padding-left: 10px;
-    padding-top: 20px;
-  }
-  
+.topnav a {
+	text-align: center;
+  color: black;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-decoration: none;
+  font-size: 40px;
+  font-family: Courier New;
+
+}  
+
+
   #pic {
-  width:65%;
-  align-self: left;
+  padding-left: 38%;
+  align-self: center;
     display: flex;
+ padding-bottom: 30px;
+    
   }
   
-  #images {
-  	width: 50px;
-  }
