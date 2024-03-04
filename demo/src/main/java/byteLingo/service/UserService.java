@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import byteLingo.entity.FCEntity;
 import byteLingo.entity.UserEntity;
+import byteLingo.repository.FCRepository;
 import byteLingo.repository.UserRepository;
 
 @Service
@@ -14,6 +16,8 @@ public class UserService {
 	@Autowired
 	private UserRepository UserRepository;
 
+	@Autowired
+	private FCRepository FCRepository;
 	
 	public List<UserEntity> checkInput(String Input) {
 		List<UserEntity> user = UserRepository.readUsersFromDB(Input);
@@ -69,6 +73,11 @@ public class UserService {
 		String acc = UserRepository.createUserDB(username, pwd, fname, lname, email);
 		
 		return acc;
+	}
+	
+	
+	public List<FCEntity> getDSFlaschcards(){
+		return FCRepository.getDSdatabase();
 	}
 	
 }

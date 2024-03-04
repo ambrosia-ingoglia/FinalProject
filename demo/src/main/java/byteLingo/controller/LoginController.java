@@ -43,6 +43,17 @@ public class LoginController {
 		return "setup";
 	}
 	
+	@GetMapping("/fc")
+	String getFC() {
+		return "fc";
+	}
+	
+	@GetMapping("/ds")
+	String getDS() {
+		return "user_home";
+	}
+	
+	
     @PostMapping("/authorization")
     public String getAuthorization(@RequestParam("username") String username, @RequestParam("password") String pwd, RedirectAttributes model){
     	

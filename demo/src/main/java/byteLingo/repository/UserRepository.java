@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -58,9 +58,11 @@ public class UserRepository {
 		//checks if the user or email already existed
 		List<UserEntity> checkuser = jdbcTemplate.query("select * from user_info where username=?", mapper, new Object[]{username});
 		List<UserEntity> checkemail = jdbcTemplate.query("select * from user_info where email=?", mapper, new Object[]{email});
-		if(checkuser != null || checkemail !=null) {
+		
+		if(checkuser.size() > 0|| checkemail.size() > 0) {
 			return null;
 		}
+		
 		
 		
 		Integer lastID = null;
