@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Home</title>
+</head>
+
+<header> 
+    <div>
+        <img id = "pic" src="images/logo.png">
+        <a href='new_account'>
+        <h1><button class="btn">Get Started</button></h1> </a>
+    </div>
+    <hr>
+</header>
+
+<table>
+  <tr> 
+    <td><SCRIPT>
+    function ShowAndHide() {
+        var x = document.getElementById('SectionName');
+        if (x.style.display == 'none') {
+            x.style.display = 'block';
+        } else {
+            x.style.display = 'none';
+        }
+    }
+    </SCRIPT>
+    <BUTTON ONCLICK="ShowAndHide()">Front of Card.</BUTTON>
+    <DIV class="boxed">
+          <DIV ID="SectionName" STYLE="display:none">Text to be shown and hidden</DIV>
+    </DIV></td>
+    <td><SCRIPT>
+    function ShowAndHide1() {
+        var x = document.getElementById('SectionName1');
+        if (x.style.display == 'none') {
+            x.style.display = 'block';
+        } else {
+            x.style.display = 'none';
+        }
+    }
+    </SCRIPT>
+    <BUTTON ONCLICK="ShowAndHide1()">Back of Card.</BUTTON>
+    <DIV class="boxed">
+          <DIV ID="SectionName1" STYLE="display:none">Text to be shown and hidden</DIV>
+    </DIV></td>
+  </tr>
+</table>
+<hr>
+
+</html>
+
+<style>
+    .boxed {
+          border: 1px solid green ;
+    }
+</style>
+<!--TODO-->
+<!--Stylize buttons-->
+<!--Have boxes be expanded but empty-->
