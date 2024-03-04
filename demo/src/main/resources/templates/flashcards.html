@@ -60,3 +60,18 @@
 <!--TODO-->
 <!--Make reveal buttons in constant spots-->
 <!--Stylize boxes-->
+
+<body>
+    <h1>All Rows</h1>
+    <table>
+    	<tr>
+        	<th>Question</th>
+            <th>Answer</th>
+
+        </tr>
+        <tr th:each="row : ${rows}">
+                <td th:text="${row.question}"></td>
+                <td th:text="${row.answer}"></td>
+        </tr>
+    </table>
+</body>
