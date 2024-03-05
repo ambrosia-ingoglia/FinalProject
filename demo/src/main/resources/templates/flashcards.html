@@ -31,9 +31,11 @@
     }
     </SCRIPT>
     <BUTTON ONCLICK="ShowAndHide()"><img src="images/button_front-of-card.png"></BUTTON>
-    <DIV class="boxed">
-          <DIV ID="SectionName"><p id="text1">____________</p></DIV>
-    </DIV></td>
+    <DIV class="container">
+    	  <img src="images/fcbackground.png" style="width:50%;">
+          <DIV ID="SectionName" class="centered"><p id="text1">____________</p></DIV>
+    </DIV>
+    </td>
     <td>
     <SCRIPT>
     function ShowAndHide1() {
@@ -46,8 +48,9 @@
     }
     </SCRIPT>
     <BUTTON ONCLICK="ShowAndHide1()"><img src="images/button_back-of-card.png"></BUTTON>
-    <DIV class="boxed">
-          <DIV ID="SectionName1"><p id="text2">____________</p></DIV>
+    <DIV class="container">
+    	  <img src="images/fcbackground.png" style="width:50%;">
+          <DIV ID="SectionName1" class="centered"><p id="text2">____________</p></DIV>
     </DIV>
     </td>
   </tr>
@@ -57,13 +60,18 @@
 </html>
 
 <style>
-    .boxed {
-          border: 1px solid green ;
-    }
+    .container {
+  		position: relative;
+  		text-align: center;
+  		color: white;
+	}
+    .centered {
+  		position: absolute;
+  		top: 50%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+	}
 </style>
-<!--TODO-->
-<!--Make reveal buttons in constant spots-->
-<!--Stylize boxes-->
 
 	<table>
         <th>
