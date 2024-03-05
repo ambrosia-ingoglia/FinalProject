@@ -1,0 +1,70 @@
+.collapsible {
+  background-color: #18113C;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 30px;
+  font-family: Courier New;
+}
+
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
+
+
+.topnav a {
+	text-align: center;
+  color: black;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-decoration: none;
+  font-size: 40px;
+  font-family: Courier New;
+
+}  
+
+  #pic {
+  padding-left: 38%;
+  align-self: center;
+    display: flex;
+ padding-bottom: 30px;
+    
+  }
+  
+  
+ p{
+    font-size: 50px;
+    text-align: center;
+    font-family: Courier New;
+  }
+  
+
+  
