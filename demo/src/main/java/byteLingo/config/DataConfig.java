@@ -16,11 +16,7 @@ public class DataConfig {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/se_project");
         dataSource.setUsername("root");
-<<<<<<< Updated upstream
         dataSource.setPassword("Mysql@123");
-=======
-        dataSource.setPassword("$Edg131854");
->>>>>>> Stashed changes
         return dataSource;
     }
     
