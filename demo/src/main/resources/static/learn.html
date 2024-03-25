@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="learn.css">
+  <title>Home</title>
+</head>
+
+<header> 	
+<img id = "pic" src="images/logo.png">
+<div class="topnav">
+	<h2 th:text="${reply}"></h2>
+  <a href="user_home"> Home</a>
+  <a href="about.html">About</a> 
+  <a href="learn.html">Learn</a>
+  <a href="fc">Flashcards</a> 
+  <a href="profile.html">Profile</a>
+  <a href="settings.html">Settings</a> 
+</div>
+<hr>
+</header>
+
+<body>
+
+<p>Games</p>
+<button class="collapsible">Wordle</button>
+<div class="content">
+  <p><iframe src="https://mywordle.strivemath.com/?word=xmkhd" height="700" width="100%" style="border:0"></iframe></p>
+</div>
+<button class="collapsible">Hangman</button>
+<div class="content">
+  <p><iframe src="https://www.hangmanwords.com/play/custom?g=Ynl0ZXM=" height="700" width="100%" style="border:0"></iframe></p>
+</div>
+<button class="collapsible">Word Search</button>
+<div class="content">
+  <p><img src="images/cw.png"></p>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>

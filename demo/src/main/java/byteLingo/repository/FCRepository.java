@@ -39,4 +39,18 @@ public class FCRepository {
         
         return rows;
     }
+	
+	public List<FCEntity> getOOPdatabase() {
+        String sql = "SELECT * FROM oop_questions";
+        
+        List<FCEntity> rows = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            FCEntity entity = new FCEntity(null, null);
+            entity.setQuestion(rs.getString("question"));
+            entity.setAnswer(rs.getString("answer"));
+
+            return entity;
+        });
+        
+        return rows;
+    }
 }

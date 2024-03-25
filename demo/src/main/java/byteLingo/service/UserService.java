@@ -15,9 +15,6 @@ import byteLingo.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository UserRepository;
-
-	@Autowired
-	private FCRepository FCRepository;
 	
 	public List<UserEntity> checkInput(String Input) {
 		List<UserEntity> user = UserRepository.readUsersFromDB(Input);
@@ -73,11 +70,6 @@ public class UserService {
 		String acc = UserRepository.createUserDB(username, pwd, fname, lname, email);
 		
 		return acc;
-	}
-	
-	
-	public List<FCEntity> getDSFlaschcards(){
-		return FCRepository.getDSdatabase();
 	}
 	
 }

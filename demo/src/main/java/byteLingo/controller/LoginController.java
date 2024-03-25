@@ -50,7 +50,7 @@ public class LoginController {
 	
 	@GetMapping("/ds")
 	String getDS() {
-		return "user_home";
+		return "ds";
 	}
 	
 	
@@ -85,6 +85,6 @@ public class LoginController {
     	}
     	
     	
-    	return "setup";
+    	return "redirect:/setup";
     }
 }
