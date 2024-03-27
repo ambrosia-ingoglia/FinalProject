@@ -52,7 +52,28 @@ public class LoginController {
 	String getDS() {
 		return "ds";
 	}
-	
+
+    
+    	@GetMapping("/changePassword")
+    public String getChangePassword() {
+        return "change_password";
+    }
+
+
+    @PostMapping("/changePassword")
+    public String postChangePassword(@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword") String newPassword,@RequestParam("confirmPassword") String confirmPassword,RedirectAttributes redirectAttributes) {
+	//has the user enter their password twice
+        if (!newPassword.equals(confirmPassword)) {
+            redirectAttributes.addFlashAttribute("errorMessage", "passwords do not match");
+            return "redirect:/changePassword";
+        }
+
+
+        String response = userService.changePassword(oldPassword, newPassword);
+        redirectAttributes.addFlashAttribute("changePasswordResult", response);
+        return "redirect:/user_home"; // send the user back to their homepage
+    }
+
 	
     @PostMapping("/authorization")
     public String getAuthorization(@RequestParam("username") String username, @RequestParam("password") String pwd, RedirectAttributes model){
