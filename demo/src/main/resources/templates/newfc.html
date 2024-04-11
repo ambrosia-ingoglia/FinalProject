@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="user_hp.css">
+  <title>New Flashcard</title>
+  <style>
+   body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+    .content-wrapper {
+        padding-left: 250px;
+    }
+    </style>
+</head>
+
+<header> 	
+<img id = "pic" src="images/logo.png">
+<div class="topnav">
+  <a th:href="@{/user_home(username=${username})}"> Home</a>
+  <a th:href="@{/about(username=${username})}">About</a> 
+  <a th:href="@{/learn(username=${username})}">Learn</a>
+  <a th:href="@{/fc(username=${username})}">Flashcards</a> 
+  <a href="profile.html">Profile</a>
+  <a href="settings.html">Settings</a> 
+</div>
+<hr>
+</header>
+
+<script>
+	function insertTab(evt) {
+	    if (evt.keyCode == 9) { // Tab key
+	        evt.preventDefault(); // Prevent the default action
+	        var textArea = evt.target;
+	        var start = textArea.selectionStart;
+	        var end = textArea.selectionEnd;
+	        var text = textArea.value;
+	        var newText = text.substring(0, start) + '\t' + text.substring(end);
+	        textArea.value = newText;
+	        textArea.selectionStart = textArea.selectionEnd = start + 1; // Move the cursor after the inserted tab
+	    }
+	}
+	
+</script>
+	
+
+<body>
+	<div class="content-wrapper">
+		<form action="newTable" method="post" classs="input-container">
+		<h2 style="font-size:15pt; font-family:Trebuchet MS;">Create a new Study set</h2> <br/><br/>
+		
+			<input type='text' class="input-field" name='table_name' placeholder="e.g. Object Oriented Programming questions"/>
+			<div class="title">Title</div>
+			<br/>
+			<h2 style="font-size:15pt; font-family:Trebuchet MS;">Enter your data</h2>
+			<textarea rows='18' cols='140' class="input-textarea" name='all_data' onkeydown="insertTab(event)" placeholder="question 1	answer1&#10;question 2	answer2&#10;question 3	answer3&#10;Separated	by tab&#10"></textarea><br/><br/>
+			
+			<input type='hidden' name='username' th:value='${username}'>
+			<button class="btn">Create</button>
+			
+		</form>
+	</div>
+</body>
+</html>

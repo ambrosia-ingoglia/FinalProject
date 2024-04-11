@@ -3,12 +3,13 @@ package byteLingo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import byteLingo.entity.FCEntity;
 import byteLingo.entity.UserEntity;
-import byteLingo.repository.FCRepository;
 import byteLingo.repository.UserRepository;
 
 @Service
@@ -23,9 +24,8 @@ public class UserService {
 		
 	}
 	
-	
 	//checks if the user exists by sending it to UserRepository
-	public String checkDatabase(String username, String pwd, Model model) {
+	public String checkDatabase(String username, String pwd, RedirectAttributes model) {
     	
     	String user_name;
     	String fname;
@@ -40,11 +40,11 @@ public class UserService {
 				lname = user_info.getLastname();
 				user_name = user_info.getUsername();
 				pwd2 = user_info.getPassword();
-			
-				/*model.addAttribute("fname", fname);
-				model.addAttribute("lname", lname);
-				model.addAttribute("username", user_name);
-				model.addAttribute("password", pwd2);*/
+				
+				model.addFlashAttribute("fname", fname);
+				model.addFlashAttribute("lname", lname);
+				model.addFlashAttribute("username", user_name);
+				model.addFlashAttribute("password", pwd2);
 				
 				if(user_name.equals(username)) {
 					if(pwd2.equals(pwd)) {
@@ -64,12 +64,65 @@ public class UserService {
     }
 	
 	
-	//creates a account
+	//creates an account
 	public String createUser(String username, String pwd, String fname,
-			String lname, String email) {
-		String acc = UserRepository.createUserDB(username, pwd, fname, lname, email);
+			String lname, String email, RedirectAttributes model) {
+		String acc = UserRepository.createUserDB(username, pwd, fname, lname, email, model);
 		
 		return acc;
 	}
 	
+	public void addFlashCard(String user, String new_table) {
+		UserRepository.InsertTable(user, new_table);
+	}
+
+	public void printTables(String user, Model model){
+		//returns the list of flashcards that the user have
+		List<String> personal_fc = UserRepository.showFC(user);
+		//System.out.print(personal_fc);
+		model.addAttribute("rows", personal_fc);
+	}
+	
+	// Method to get the logged-in username
+	private String getLoggedInUsername() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication != null && authentication.isAuthenticated()) {
+			return authentication.getName();
+		}
+		return null;
+	}
+		
+
+	// method for updating the password
+	public String updatePassword(String oldPassword, String newPassword, String confirmPassword) {
+	    String loggedInUsername = getLoggedInUsername();
+		String pwd2;
+		String user_name;
+	        if (loggedInUsername != null) {// if the user is logged in
+	            List<UserEntity> user = checkInput(loggedInUsername);//gets all the users with that username
+	            if (user != null) {// if the user exists in the database
+				for(UserEntity user_info: user)	{
+					user_name = user_info.getUsername();//get the username in the database
+					pwd2 = user_info.getPassword(); //get the password in the database
+						
+					if(user_name.equals(loggedInUsername)) {
+						if(pwd2.equals(oldPassword)) {//make sure you have the correct user
+							if(oldPassword.equals(newPassword)){//validates that the new password is differnt from the old password
+								return "you need to choose a new password";
+							}
+							else{
+							UserRepository.updateUserPassword(loggedInUsername, oldPassword, newPassword, confirmPassword) //update the password
+							}
+						} 
+					}
+			}
+	                return "Password updated successfully for user: " + loggedInUsername;
+	            } else {
+	                return "Failed to update password. User not found.";
+	            }
+	        } else {
+	            return "No user logged in.";
+	        }
+	    }
+
 }

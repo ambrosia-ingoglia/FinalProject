@@ -33,18 +33,39 @@ public class LoginController {
 		return "sign-in";
 	}
 	
-	@GetMapping("/user_home")
-	String getUserHome() {
-		return "user_home";
-	}
-	
 	@GetMapping("/setup")
 	String getSetup() {
 		return "setup";
 	}
 	
+	@GetMapping("/user_home")
+	String getUserHome(@RequestParam(name="username", required=false) String user, Model model) {
+		if(user != null) {
+			model.addAttribute("username", user);
+		}
+		return "user_home";
+	}
+	
+	@GetMapping("/about")
+	String getAbout(@RequestParam("username") String user, Model model) {
+		model.addAttribute("username", user);
+		
+		return "about";
+	}
+	
+	@GetMapping("/learn")
+	String getLearn(@RequestParam("username") String user, Model model) {
+		model.addAttribute("username", user);
+		
+		return "learn";
+	}
+	
 	@GetMapping("/fc")
-	String getFC() {
+	String getFC(@RequestParam("username") String user, Model model) {
+		model.addAttribute("username", user);
+		
+		UserService.printTables(user, model);
+		
 		return "fc";
 	}
 	
@@ -52,8 +73,7 @@ public class LoginController {
 	String getDS() {
 		return "ds";
 	}
-
-    
+	
     	@GetMapping("/changePassword")
     public String getChangePassword() {
         return "change_password";
@@ -62,14 +82,14 @@ public class LoginController {
 
     @PostMapping("/changePassword")
     public String postChangePassword(@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword") String newPassword,@RequestParam("confirmPassword") String confirmPassword,RedirectAttributes redirectAttributes) {
-	//has the user enter their password twice
+    	//has the user confirmed there new password
         if (!newPassword.equals(confirmPassword)) {
             redirectAttributes.addFlashAttribute("errorMessage", "passwords do not match");
             return "redirect:/changePassword";
         }
 
 
-        String response = userService.changePassword(oldPassword, newPassword);
+        String response = UserService.updatePassword(oldPassword, newPassword, confirmPassword);
         redirectAttributes.addFlashAttribute("changePasswordResult", response);
         return "redirect:/user_home"; // send the user back to their homepage
     }
@@ -84,7 +104,6 @@ public class LoginController {
     		return "result";
     	}
     	
-    	model.addFlashAttribute("reply", existsInDatabase);
     	return "redirect:/user_home";
     }
 	
@@ -95,17 +114,15 @@ public class LoginController {
     public String getSignUp(@RequestParam("username") String username, 
     		@RequestParam("password") String pwd, @RequestParam("firstname") String fname,
     		@RequestParam("lastname") String lname, @RequestParam("email") String email,
-    		Model model){
+    		RedirectAttributes model){
     	
-    	String createDB = UserService.createUser(username, pwd, fname, lname, email); 
-    	
-    	model.addAttribute("na", createDB);
+    	String createDB = UserService.createUser(username, pwd, fname, lname, email, model); 
     	
     	if(createDB == null) {
     		return "result2";
     	}
     	
     	
-    	return "redirect:/setup";
+    	return "redirect:/user_home";
     }
 }

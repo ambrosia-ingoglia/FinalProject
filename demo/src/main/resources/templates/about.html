@@ -8,11 +8,10 @@
 <header> 	
 <img id = "pic" src="images/logo.png">
 <div class="topnav">
-	<h2 th:text="${reply}"></h2>
-  <a href="user_home"> Home</a>
-  <a href="about.html">About</a> 
-  <a href="learn.html">Learn</a>
-  <a href="fc">Flashcards</a> 
+  <a th:href="@{/user_home(username=${username})}"> Home</a>
+  <a th:href="@{/about(username=${username})}">About</a> 
+  <a th:href="@{/learn(username=${username})}">Learn</a>
+  <a th:href="@{/fc(username=${username})}">Flashcards</a> 
   <a class="active" href="profile.html">Profile</a>
   <a href="settings.html">Settings</a> 
 </div>

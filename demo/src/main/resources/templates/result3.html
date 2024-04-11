@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="user_hp.css">
+  <title>Home</title>
+  <style>
+  .container {
+        text-align: center;
+    }
+  </style>
+</head>
+
+<header> 	
+<img id = "pic" src="images/logo.png">
+<div class="topnav">
+  <a th:href="@{/user_home(username=${username})}"> Home</a>
+  <a th:href="@{/about(username=${username})}">About</a> 
+  <a th:href="@{/learn(username=${username})}">Learn</a>
+  <a th:href="@{/fc(username=${username})}">Flashcards</a> 
+  <a href="profile.html">Profile</a>
+  <a href="settings.html">Settings</a> 
+</div>
+<hr>
+</header>
+
+<body>
+	<div class="container">
+		<form th:action="@{/newfc}">
+			<h2 style="font-size:15pt; font-family:Trebuchet MS;">Title has already been used. Use a different title</h2> <br/>
+			<input type='hidden' name='username' th:value='${username}'>
+			<button class="btn">Return</button>
+		</form>
+	</div>
+</body>
+</html>

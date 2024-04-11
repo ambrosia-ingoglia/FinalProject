@@ -8,10 +8,10 @@
 <header> 	
 <img id = "pic" src="images/logo.png">
 <div class="topnav">
-  <a href="user_home"> Home</a>
-  <a href="about.html">About</a> 
-  <a href="learn.html">Learn</a>
-  <a class="active" href="fc">Flashcards</a> 
+  <a th:href="@{/user_home(username=${username})}"> Home</a>
+  <a th:href="@{/about(username=${username})}">About</a> 
+  <a th:href="@{/learn(username=${username})}">Learn</a>
+  <a th:href="@{/fc(username=${username})}">Flashcards</a> 
   <a href="profile.html">Profile</a>
   <a href="settings.html">Settings</a> 
 </div>
@@ -22,7 +22,7 @@
 	<table id="pick">
 		  <tr>
 		    <th> <a href="DSflashcard"><img src="images/data.png"> <br> Data Structures  </a> </th>
-		    <th>  <a href="OOPflashcard"><img src="images/oop.jpg">   <br>Object Oriented Programming </a> </th>
+		    <th> <a href="OOPflashcard"><img src="images/oop.jpg">   <br>Object Oriented Programming </a> </th>
 		    <th> <a href="swe.html"><img src="images/swd.png"> <br>Software Engineering </a></th>
 		  </tr>
 		  <tr>
@@ -30,6 +30,20 @@
 		    <th> <a href="user_home"> <img src="images/os.png"> <br> Operating Systems </a>  </th>
 		    <th> <a href="user_home">  <img src="images/csb.jpg">  <br>  Computer Science Basics </a> </th>
 		  </tr>
+	</table>
+	
+	
+	<table id="pick" th:if="${rows != null and not #lists.isEmpty(rows)}">
+		<tr>
+			<td colspan="3">
+				<h2>Personal FlashCards</h2>
+			</tr>>
+		</tr>
+	    <tr>
+	        <th th:each="item : ${rows}">
+	           <a th:href="@{/another_page(username=${username}, item=${item})}"> <img src="images/personal.png"> <br><a th:text="${item}"></a>  </a>
+	        </th>
+	    </tr>
 	</table>
 </body>
 

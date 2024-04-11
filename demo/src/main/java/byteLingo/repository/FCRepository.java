@@ -53,4 +53,51 @@ public class FCRepository {
         
         return rows;
     }
+	
+	public List<FCEntity> getMyTable(String table) {
+        String sql = "SELECT * FROM " + table + "";
+        
+        List<FCEntity> rows = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            FCEntity entity = new FCEntity(null, null);
+            entity.setQuestion(rs.getString("question"));
+            entity.setAnswer(rs.getString("answer"));
+
+            return entity;
+        });
+        
+        return rows;
+    }
+	
+	
+	//Check if the table already existed
+	public Integer checkDB(String tablename) {
+		String stmt = "SELECT count(*) FROM information_schema.tables WHERE table_name = ?";
+		Integer count = jdbcTemplate.queryForObject(stmt, Integer.class, tablename);
+		if(count == 0) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+	
+	
+	//to create the flashcards 
+	public void createDB(String tablename) {
+		String stmt = "CREATE TABLE " + tablename + " ("
+				  + "`id` INT NOT NULL, "
+				  + "`question` LONGTEXT NOT NULL, "
+				  + "`answer` LONGTEXT NOT NULL, "
+				  + "PRIMARY KEY (`id`));";
+		//System.out.print(stmt);
+		jdbcTemplate.execute(stmt);
+	}
+	
+	public void newFCdata(String tablename, Integer id, String question, String answer) {
+		id = id + 1;
+		
+		String stmt = "INSERT INTO " + tablename + " (id, question, answer) VALUES (?, ?, ?)";
+		//System.out.print(stmt);
+		jdbcTemplate.update(stmt, id, question, answer);
+		
+	}
 }

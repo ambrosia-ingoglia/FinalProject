@@ -55,16 +55,42 @@
   padding-left: 38%;
   align-self: center;
     display: flex;
- padding-bottom: 30px;
+  padding-bottom: 30px;
     
   }
   
+  #pic {
+	padding-left: 38%;
+	padding-bottom: 20px;
+  }
   
+  #pick img {
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+    width: 150px;
+  }
+  
+  #pick img:hover {	
+	width: 185px;
+  }
  p{
     font-size: 50px;
     text-align: center;
     font-family: Courier New;
   }
+ 
+ .center {
+  margin-left: auto;
+  margin-right: auto;
+}
+a {
+	font-size: 30px;
+	text-decoration: none; 
+	color: black;
+	font-family: Courier New;
+}
   
 
   

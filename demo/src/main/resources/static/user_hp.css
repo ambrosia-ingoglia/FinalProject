@@ -36,3 +36,43 @@
 }
   
   
+ .input-container {
+	margin: 50px auto;
+    width: 300px;
+ }
+ 
+ .input-field {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    padding: 10px;
+    width: 43%;
+    transition: border-bottom-color 0.3s ease;
+ }
+
+ .input-field:focus {
+    outline: none;
+    border-bottom-color: green;
+ }
+ .title {
+    font-size: 15px;
+   	font-family: 'Trebuchet MS';
+    color: black;
+    margin-top: 10px;
+  }
+  .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
