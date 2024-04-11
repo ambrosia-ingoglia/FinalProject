@@ -113,4 +113,16 @@ public class UserRepository {
        
 		return finalList;
 	}
+	
+	public String updateUserPassword(String loggedInUsername, String oldPassword, String newPassword, String confirmPassword) {
+		List<UserEntity> loggedInUser = jdbcTemplate.query("SELECT * FROM user_info WHERE username=? AND password=?", new Object[]{Username, old_Password}, mapper); //get the users name and password
+		String sql = "UPDATE user_info SET password=? WHERE username=?"; // Update the password for the logged-in user
+		int rowsUpdated = jdbcTemplate.update(sql, newPassword, loggedInUsername);
+		if (rowsUpdated > 0) {
+			return "Password updated successfully.";
+		} else {
+			return "Failed to update password.";
+		        }
+		}	
+		}
 }
