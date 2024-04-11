@@ -3,8 +3,6 @@ package byteLingo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -83,46 +81,4 @@ public class UserService {
 		model.addAttribute("rows", personal_fc);
 	}
 	
-	// Method to get the logged-in username
-	private String getLoggedInUsername() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication != null && authentication.isAuthenticated()) {
-			return authentication.getName();
-		}
-		return null;
-	}
-		
-
-	// method for updating the password
-	public String updatePassword(String oldPassword, String newPassword, String confirmPassword) {
-	    String loggedInUsername = getLoggedInUsername();
-		String pwd2;
-		String user_name;
-	        if (loggedInUsername != null) {// if the user is logged in
-	            List<UserEntity> user = checkInput(loggedInUsername);//gets all the users with that username
-	            if (user != null) {// if the user exists in the database
-				for(UserEntity user_info: user)	{
-					user_name = user_info.getUsername();//get the username in the database
-					pwd2 = user_info.getPassword(); //get the password in the database
-						
-					if(user_name.equals(loggedInUsername)) {
-						if(pwd2.equals(oldPassword)) {//make sure you have the correct user
-							if(oldPassword.equals(newPassword)){//validates that the new password is differnt from the old password
-								return "you need to choose a new password";
-							}
-							else{
-							UserRepository.updateUserPassword(loggedInUsername, oldPassword, newPassword, confirmPassword) //update the password
-							}
-						} 
-					}
-			}
-	                return "Password updated successfully for user: " + loggedInUsername;
-	            } else {
-	                return "Failed to update password. User not found.";
-	            }
-	        } else {
-	            return "No user logged in.";
-	        }
-	    }
-
 }

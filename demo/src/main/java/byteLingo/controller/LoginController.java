@@ -82,14 +82,14 @@ public class LoginController {
 
     @PostMapping("/changePassword")
     public String postChangePassword(@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword") String newPassword,@RequestParam("confirmPassword") String confirmPassword,RedirectAttributes redirectAttributes) {
-    	//has the user confirmed there new password
+	//has the user enter their password twice
         if (!newPassword.equals(confirmPassword)) {
             redirectAttributes.addFlashAttribute("errorMessage", "passwords do not match");
             return "redirect:/changePassword";
         }
 
 
-        String response = UserService.updatePassword(oldPassword, newPassword, confirmPassword);
+        String response = userService.changePassword(oldPassword, newPassword);
         redirectAttributes.addFlashAttribute("changePasswordResult", response);
         return "redirect:/user_home"; // send the user back to their homepage
     }
