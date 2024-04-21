@@ -31,6 +31,8 @@ public class UserService {
     	String fname;
     	String lname;
     	String pwd2;
+		Integer login_streak;
+		boolean login_today;
     	
     	
 		List<UserEntity> user = checkInput(username);
@@ -40,6 +42,9 @@ public class UserService {
 				lname = user_info.getLastname();
 				user_name = user_info.getUsername();
 				pwd2 = user_info.getPassword();
+				login_streak = user_info.getLoginStreak();
+				login_today = user_info.getloginToday();
+
 				
 				model.addFlashAttribute("fname", fname);
 				model.addFlashAttribute("lname", lname);
@@ -48,6 +53,10 @@ public class UserService {
 				
 				if(user_name.equals(username)) {
 					if(pwd2.equals(pwd)) {
+						if(login_today.equals(false)) {
+							user_info.setLoginToday(true);
+							user_info.setLoginStreak(user_info.getLoginStreak() + 1);
+						}
 						return "Welcome, " + fname + " " + lname;
 					} else {
 						return null;
@@ -124,5 +133,4 @@ public class UserService {
 	            return "No user logged in.";
 	        }
 	    }
-
 }

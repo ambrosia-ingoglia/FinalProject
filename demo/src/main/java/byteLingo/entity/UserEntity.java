@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.lang.Thread;
 
 
 @Table(name = "se_project")
@@ -15,17 +16,31 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private Integer loginStreak;
+	private boolean loginToday;
 	
 	private String username;
 	private String fname;
 	private String lname;
 	private String password;
 	
-	public UserEntity(String username, String fname, String lname, String password) {
+	public UserEntity(String username, String fname, String lname, String password, Integer loginStreak, boolean loginToday) {
 		this.username = username;
 		this.fname = fname;
 		this.lname = lname;
 		this.password = password;
+		this.loginStreak = loginStreak;
+		this.loginToday = loginToday;
+
+		//Unsure of where to put this so that it is always running, commented out for now
+		/*do {
+			Thread.sleep(1000 * 60 * 60 * 24);
+			if (this.loginToday.equals(true)) {
+				this.loginToday = false;
+			}else {
+				this.setLoginStreak(0);
+			}
+		} while (true);*/
 	}
 	
 	public Integer getId() {
@@ -47,6 +62,14 @@ public class UserEntity {
 	public String getPassword() {
 		return password;
 	}
+
+	public Integer getLoginStreak() {
+		return loginStreak;
+	}
+
+	public boolean getloginToday() {
+		return loginToday;
+	}
 	
 	public void setId(Integer id) {
 		this.id = id;
@@ -67,6 +90,14 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public void setLoginStreak(Integer loginStreak) {
+		this.loginStreak = loginStreak;
+	}
+
+	public void setLoginToday(boolean loginToday) {
+		this.loginToday = loginToday;
+	}
 	
 	public String printUserInfo() {
 	    return "UserEntity{" +
@@ -75,6 +106,8 @@ public class UserEntity {
 	            ", firstname='" + fname + '\'' +
 	            ", lastname='" + lname + '\'' +
 	            ", password='" + password + '\'' +
+				", login streak='" + loginStreak + '\'' +
+				", login today='" + loginToday + '\'' +
 	            '}';
 	}
 	

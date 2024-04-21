@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import byteLingo.service.UserService;
 
+import java.lang.Integer;
+
 
 @Controller
 public class LoginController {
@@ -125,4 +127,11 @@ public class LoginController {
     	
     	return "redirect:/user_home";
     }
+
+	@GetMapping("/loginStreak")
+	public int getStreak(String user) {
+		List<UserEntity> userEntity = UserService.checkInput(user);
+		
+		return userEntity.getLoginStreak().intValue();
+	}
 }
