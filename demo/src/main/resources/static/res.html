@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="res.css">
+  <title>Home</title>
+</head>
+
+<header> 	
+<img id = "pic" src="images/logo.png">
+<div class="topnav">
+	<h2 th:text="${reply}"></h2>
+  <a href="user_home.html"> Home</a>
+  <a href="about.html">About</a> 
+  <a href="learn.html">Create</a>
+        <a href="fc.html">Flashcards</a> 
+        <a href="source.html">Learn</a> 
+</div>
+<hr>
+  <style>
+    /* Styles for the resource grid */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-gap: 20px;
+      padding: 20px;
+    }
+
+    .resource {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .resource img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+
+    /* Styles for the filter buttons */
+    .filter-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .filter-button:hover {
+      background-color: #0056b3;
+    }
+    
+    img {
+    
+    }
+  </style>
+</head>
+<body>
+
+<!-- Filter buttons -->
+<div>
+  <button class="filter-button" onclick="filterResources('all')">All</button>
+  <button class="filter-button" onclick="filterResources('software-engineering')">Software Engineering</button>
+  <button class="filter-button" onclick="filterResources('data')">Data Structures</button>
+    <button class="filter-button" onclick="filterResources('object-oriented')">Object Oriented Programming</button>
+      <button class="filter-button" onclick="filterResources('basic-cs')">Basic Computer Science</button>
+        <button class="filter-button" onclick="filterResources('computer-security')">Computer Security</button>
+          <button class="filter-button" onclick="filterResources('operating-systems')">Operating Systems</button>
+  <!-- Add more filter buttons as needed -->
+</div>
+
+<!-- Resource grid container -->
+<div class="grid-container">
+  <!-- Resource 1: Software Engineering -->
+  <div class="resource" data-tags="software-engineering">
+    <img src="images/b1.jpg">
+    <p>Object-Oriented Software Engineering: Using UML, Patterns and Java, by Bernd Bruegge and Allen H. Dutoit</p>
+  </div>
+
+  <div class="resource" data-tags="software-engineering">
+    <img src="images/b2.jpg">
+    <p> The Unified Modeling Language: User Guide by Grady Booch et al
+.</p>
+  </div>
+  
+    <div class="resource" data-tags="software-engineering">
+    <img src="images/b3.jpg">
+    <p> Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma et al .</p>
+  </div>
+  
+      <div class="resource" data-tags="software-engineering">
+    <img src="images/b4.jpg">
+    <p> Introduction to Software Testing by Paul Ammann and Jeff Offutt</p>
+  </div>
+  
+        <div class="resource" data-tags="computer-security">
+    <img src="images/b5.jpg">
+    <p> Computer Security: Principles and Practice by William Stallings and Lawrie Brown</p>
+  </div>
+  
+    <div class="resource" data-tags="object-oriented">
+    <img src="images/b6.jpg">
+    <p> Beginning Java 17 Fundamentals: Object-Oriented Programming in Java 17 by Kishori Sharan, Adam L. Davis, et al</p>
+  </div>
+  
+      <div class="resource" data-tags="data">
+    <img src="images/b7.jpg">
+    <p> Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</p>
+  </div>
+  
+        <div class="resource" data-tags="data">
+    <img src="images/b8.jpg">
+    <p> Data Structures and C Programs by Christopher J, Van Wyk</p>
+  </div>
+  
+          <div class="resource" data-tags="basic-cs">
+    <img src="images/b9.jpg">
+    <p> C Programming: A Modern Approach by K.N. King. W. W. Norton</p>
+  </div>
+  
+    <div class="resource" data-tags="basic-cs">
+    <img src="images/a1.jpg">
+    <p> Understanding and Using C Pointers: Core techniques for memory management by Richard Reese and O’Reilly Media</p>
+  </div>
+  
+      <div class="resource" data-tags="basic-cs">
+    <img src="images/a2.jpg">
+    <p> The Linux Command Line: A Complete Introduction by William Shotts, Jr</p>
+  </div>
+  
+        <div class="resource" data-tags="operating-systems">
+    <img src="images/a3.jpg">
+    <p> Operating System Concepts by Abraham Silberschatz, Peter B. Galvin, Greg Gagne</p>
+  </div>  
+  
+
+  <!-- Add more resources with appropriate tags -->
+</div>
+
+<script>
+  function filterResources(tag) {
+    var resources = document.querySelectorAll('.resource');
+    resources.forEach(function(resource) {
+      if (tag === 'all' || resource.dataset.tags.includes(tag)) {
+        resource.style.display = 'block';
+      } else {
+        resource.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

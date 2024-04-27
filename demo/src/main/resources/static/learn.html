@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="learn.css">
+  <title>Home</title>
+</head>
+
+<header> 	
+<img id = "pic" src="images/logo.png">
+<div class="topnav">
+	<h2 th:text="${reply}"></h2>
+  <a href="user_home.html"> Home</a>
+  <a href="about.html">About</a> 
+  <a href="learn.html"> Create</a>
+        <a href="fc.html">Flashcards</a> 
+        <a href="res.html">Learn</a> 
+</div>
+<hr>
+</header>
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .flashcard {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+
+    .flashcard h2 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .flashcard p {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    form {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 400px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: Courier New;
+      
+    }
+  </style>
+</head>
+
+<button class="collapsible" onclick="toggleFlashcard()"><span id="container-name-placeholder"><input type="text" id="container-name" placeholder="Enter  name"></span></button>
+<div class="content">
+  <div class="container">
+    <h1>Flashcards</h1>
+    <div class="flashcard">
+      <h2 id="term">Term</h2>
+      <p id="definition">Definition goes here</p>
+    </div>
+    <div class="button-container">
+      <button onclick="showAnswer()">Show Answer</button>
+      <button onclick="nextFlashcard()">Next Card</button> 
+    </div>
+    <form id="flashcard-form" onsubmit="addFlashcard(event)">
+      <input type="text" id="term-input" placeholder="Enter term">
+      <input type="text" id="definition-input" placeholder="Enter definition">
+      <br>
+      <button type="submit">Add Flashcard</button>
+    </form>
+  </div>
+</div>
+<br>
+<button class="collapsible" onclick="toggleFlashcard()"><span id="container-name-placeholder"><input type="text" id="container-name" placeholder="Enter  name"></span></button>
+<div class="content">
+  <div class="container">
+    <h1>Flashcards</h1>
+    <div class="flashcard">
+      <h2 id="term">Term</h2>
+      <p id="definition">Definition goes here</p>
+    </div>
+    <div class="button-container">
+      <button onclick="showAnswer()">Show Answer</button>
+      <button onclick="nextFlashcard()">Next Card</button> 
+    </div>
+    <form id="flashcard-form" onsubmit="addFlashcard(event)">
+      <input type="text" id="term-input" placeholder="Enter term">
+      <input type="text" id="definition-input" placeholder="Enter definition">
+            <br>
+      <button type="submit">Add Flashcard</button>
+    </form>
+  </div>
+</div>
+<br>
+<button class="collapsible" onclick="toggleFlashcard()"><span id="container-name-placeholder"><input type="text" id="container-name" placeholder="Enter  name"></span></button>
+<div class="content">
+  <div class="container">
+    <h1>Flashcards</h1>
+    <div class="flashcard">
+      <h2 id="term">Term</h2>
+      <p id="definition">Definition goes here</p>
+    </div>
+    <div class="button-container">
+      <button onclick="showAnswer()">Show Answer</button>
+      <button onclick="nextFlashcard()">Next Card</button> 
+    </div>
+    <form id="flashcard-form" onsubmit="addFlashcard(event)">
+      <input type="text" id="term-input" placeholder="Enter term">
+      <input type="text" id="definition-input" placeholder="Enter definition">
+            <br>
+      <button type="submit">Add Flashcard</button>
+    </form>
+  </div>
+</div>
+
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+  <script>
+    // Sample flashcards
+    const flashcards = [
+
+
+    ];
+
+    let currentCardIndex = 0;
+    const flashcard = document.querySelector('.flashcard');
+    const termElement = flashcard.querySelector('#term');
+    const definitionElement = flashcard.querySelector('#definition');
+
+    function showCurrentFlashcard() {
+      const currentCard = flashcards[currentCardIndex];
+      termElement.textContent = currentCard.term;
+      definitionElement.textContent = currentCard.definition;
+    }
+
+    function showAnswer() {
+      definitionElement.style.display = 'block';
+    }
+
+    function nextFlashcard() {
+      currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+      definitionElement.style.display = 'none';
+      showCurrentFlashcard();
+    }
+
+    function addFlashcard(event) {
+      event.preventDefault();
+      const termInput = document.getElementById('term-input').value;
+      const definitionInput = document.getElementById('definition-input').value;
+      if (termInput && definitionInput) {
+        const newFlashcard = { term: termInput, definition: definitionInput };
+        flashcards.push(newFlashcard);
+        showCurrentFlashcard();
+        // Reset form
+        document.getElementById('term-input').value = '';
+        document.getElementById('definition-input').value = '';
+      }
+    }
+
+    // Show the first flashcard initially
+    showCurrentFlashcard();
+  </script>
+  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br> 
+<footer>
+    <p>2024 BYTEPEDIA. All Rights Reserved.</p>
+</footer>
+</html>
+
+
+

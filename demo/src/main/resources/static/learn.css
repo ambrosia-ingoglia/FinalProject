@@ -1,5 +1,5 @@
 .collapsible {
-  background-color: #18113C;
+  background-color: #c0c0c0;
   color: white;
   cursor: pointer;
   padding: 18px;
@@ -55,42 +55,96 @@
   padding-left: 38%;
   align-self: center;
     display: flex;
-  padding-bottom: 30px;
+ padding-bottom: 30px;
     
   }
   
-  #pic {
-	padding-left: 38%;
-	padding-bottom: 20px;
-  }
   
-  #pick img {
-    padding-top: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 10px;
-    width: 150px;
-  }
-  
-  #pick img:hover {	
-	width: 185px;
-  }
  p{
     font-size: 50px;
     text-align: center;
     font-family: Courier New;
   }
- 
- .center {
-  margin-left: auto;
-  margin-right: auto;
-}
-a {
-	font-size: 30px;
-	text-decoration: none; 
-	color: black;
-	font-family: Courier New;
-}
   
 
-  
+p {
+  text-align: center;
+  font-size: 24px;
+}
+
+.flashcard {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.flashcard h2 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.flashcard p {
+  font-size: 18px;
+  text-align: center;
+}
+
+#activeCardButtons {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+a.close {
+  float: right;
+  width: 26px;
+  height: 26px;
+  background: url('https://microwavemansion.com/images/cancel.png') no-repeat top left;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: url('https://microwavemansion.com/images/overlay.png') repeat top left;
+}
+
+#deckSubmit,
+#saveDeck {
+  width: 50%;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+}
+
+#deckSubmit:hover,
+#saveDeck:hover {
+  border: 2px solid green;
+}
+
+.lightText {
+  color: gray;
+  position: fixed;
+  bottom: 12px;
+  right: 5px;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: right;
+}
+
+    footer {
+        background-color: #18113C;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+    
+        p {
+    font-size: 20px;
+    }
